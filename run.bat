@@ -1,1 +1,1 @@
-julia -p 10 GjT_002_disp.jl& npp\notepad++ tmp_file
+julia -p 10 GjT_002_disp.jl& notepad++ tmp_file

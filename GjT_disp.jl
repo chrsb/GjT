@@ -96,10 +96,16 @@ println("Fetching...")
 
 results = Array(Any,cross_folds)
 
-output_string = string("File name: ", data_file, "\n\nMutation odds: ", mut_odds, "\nEnsemble size: ", ensemble_size, "\nPopulation size: ", population_size, "\nTree depth: ", tree_depth, "\nMinimal growth: ", min_growth, "\nMinimal growth iterations: ", min_growth_iters, "\nNumber of folds: ", cross_folds, "\n\n")
-sum = 0
 for i in 1:cross_folds
 	results[i] = fetch(threads[i])
+end
+
+println("Fetched")
+println("Storing")
+
+output_string = string("File name: ", data_file, "\n\nMutation odds: ", mut_odds, "\nEnsemble size: ", ensemble_size, "\nPopulation size: ", population_size, "\nTree depth: ", tree_depth, "\nMinimal growth: ", min_growth, "\nMinimal growth iterations: ", min_growth_iters, "\nNumber of folds: ", cross_folds, "\nSize of elite: ", size_of_elite, "\n\n")
+sum = 0
+for i in 1:cross_folds
 	for j in 1:ensemble_size
 		output_string = string(output_string, "#", j, ":\n", pretty_print_chromosome(results[i]["ensemble"][j], tree_depth, data_class_map), "\n")
 	end
@@ -119,7 +125,7 @@ for i in 1:cross_folds
 end
 output_string = string(output_string, "average: ", (sum / cross_folds))
 
-println("Fetched")
+println("Stored")
 println("Done")
 toc()
 

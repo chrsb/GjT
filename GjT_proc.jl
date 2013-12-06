@@ -175,7 +175,7 @@ function crossover(population, aggregated_fitnesses, fitnesses, population_size,
 	elite_fitnesses = zeros(Float64, size_of_elite)
 	for i in 1:population_size
 		for j in 1:size_of_elite
-			if fitnesses[i] > elite_fitnesses[j]
+			if fitnesses[i] >= elite_fitnesses[j]
 				if j < size_of_elite
 					elite_fitnesses[j + 1] = elite_fitnesses[j]
 					new_pop[j + 1] = new_pop[j]
@@ -191,14 +191,14 @@ function crossover(population, aggregated_fitnesses, fitnesses, population_size,
 		first_one = null
 		second_one = null
 		for j in 1:population_size
-			if roll <= aggregated_fitnesses[j] 
+			if roll <= aggregated_fitnesses[j] || j == population_size
 				first_one = population[j]
 				break
 			end
 		end
 		roll = rand()
 		for j in 1:population_size
-			if roll <= aggregated_fitnesses[j] 
+			if roll <= aggregated_fitnesses[j] || j == population_size
 				second_one = population[j]
 				break
 			end
@@ -223,14 +223,14 @@ function crossover(population, aggregated_fitnesses, fitnesses, population_size,
 		first_one = null
 		second_one = null
 		for j in 1:population_size
-			if roll <= aggregated_fitnesses[j] 
+			if roll <= aggregated_fitnesses[j] || j == population_size
 				first_one = population[j]
 				break
 			end
 		end
 		roll = rand()
 		for j in 1:population_size
-			if roll <= aggregated_fitnesses[j] 
+			if roll <= aggregated_fitnesses[j] || j == population_size
 				second_one = population[j]
 				break
 			end
