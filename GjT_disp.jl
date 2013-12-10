@@ -1,8 +1,8 @@
 tic()
 println("Prepping...")
 
-require("GjT_002_properties.jl")
-require("GjT_002_proc.jl")
+require("GjT_properties.jl")
+require("GjT_proc.jl")
 
 data_f = open(data_file)
 data_arr = readlines(data_f)
